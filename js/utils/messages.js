@@ -9,14 +9,13 @@ const createElement = (template) => {
   return div.firstChild;
 };
 
-const createMessage = (type, text, buttonText) => (
+const createMessage = (type, text, buttonText) =>
   `<section class="${type}">
   <div class="${type}__inner">
     <h2 class="${type}__title">${text}</h2>
     ${buttonText ? `<button type="button" class="${type}__button">${buttonText}</button>` : ''}
   </div>
-</section>`
-);
+</section>`;
 
 const documentKeydownHandler = (evt) => {
   if (isEscapeKey(evt)) {

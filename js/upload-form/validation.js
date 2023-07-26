@@ -18,23 +18,23 @@ const pristine = new Pristine(uploadForm, {
 
 const checkDescriptionLength = (value) => value.length <= COMMENTS_MAX_LENGTH;
 
-const createHashTags = (value) => value.trim().toLowerCase().split(' ');
+const createHashtags = (value) => value.trim().toLowerCase().split(' ');
 
-const checkHashtagCorrect = (value) => {
+const checkHashtagsCorrect = (value) => {
   if (!value.length) {
     return true;
   }
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.every((element) => (HASHTAG_TEMPLATE.test(element)));
 };
 
 const checkHashtagsCount = (value) => {
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.length <= HASHTAGS_MAX_COUNT;
 };
 
 const checkHashtagsSame = (value) => {
-  const hashtags = createHashTags(value);
+  const hashtags = createHashtags(value);
   return hashtags.length === new Set(hashtags).size;
 };
 
@@ -43,7 +43,7 @@ const pristineReset = () => pristine.reset();
 
 const initValidator = () => {
   pristine.addValidator(textDescription, checkDescriptionLength, COMMENT_LENGTH_INVALID_TEXT, 1, true);
-  pristine.addValidator(textHashtag, checkHashtagCorrect, HASHTAG_INVALID_TEXT, 1, true);
+  pristine.addValidator(textHashtag, checkHashtagsCorrect, HASHTAG_INVALID_TEXT, 1, true);
   pristine.addValidator(textHashtag, checkHashtagsCount, HASHTAG_INVALID_COUNT_TEXT, 1, true);
   pristine.addValidator(textHashtag, checkHashtagsSame, HASHTAG_INVALID_SAME_TEXT, 1, true);
 };

@@ -4,7 +4,6 @@ const COMMENT_COUNTER = 5;
 
 const bigPictureContainer = document.querySelector('.big-picture');
 const buttonClose = document.querySelector('.big-picture__cancel');
-const container = document.querySelector('.pictures');
 const commentsCount = document.querySelector('.social__comment-count');
 const bigPictureImage = document.querySelector('.big-picture__img img');
 const bigPictureDescription = document.querySelector('.social__caption');
@@ -90,9 +89,6 @@ function buttonCloseClickHandler(evt) {
 }
 
 const renderBigPicture = (data) => {
-  if (!container) {
-    return;
-  }
   commentsContainer.textContent = '';
   comments = data.comments;
   fillUserModal(data);

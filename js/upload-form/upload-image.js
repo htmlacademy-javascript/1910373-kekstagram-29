@@ -6,22 +6,13 @@ import { sendData } from '../utils/api.js';
 import { renderMessage } from '../utils/messages.js';
 
 const SEND_URL = 'https://29.javascript.pages.academy/kekstagram';
-const MESSAGE_STATUS = {
-  success: 'success',
-  error: 'error'
-};
-
-const HEADER_TEXT = {
-  success: 'Изображение успешно загружено',
-  error: 'Ошибка загрузки файла',
-  'error_file': 'Недопустимое расширение для выбранного файла'
-};
-
-const BUTTON_TEXT = {
-  success: 'Круто!',
-  error: 'Попробовать ещё раз',
-  'error_file': 'Понятно'
-};
+const SUCCESS_CLASS = 'success';
+const ERROR_CLASS = 'error';
+const MESSAGE_SUCCESS = 'Изображение успешно загружено';
+const MESSAGE_ERROR = 'Ошибка загрузки файла';
+const MESSAGE_LOAD = 'Недопустимое расширение для выбранного файла';
+const SUCCESS_BTN_TEXT = 'Круто!';
+const ERROR_BTN_TEXT = 'Попробовать ещё раз';
 
 const EXTENSION_REGEXP = /.\.(jpg|png|jpeg|gif|webp)$/i;
 
@@ -36,7 +27,6 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 const effectsPreviewImages = document.querySelectorAll('.effects__preview');
 
 const effectsListChangeHandler = (evt) => initEffects(evt.target.value);
-
 
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
@@ -66,7 +56,7 @@ const uploadInputChangeHandler = (evt) => {
     showImagePreview(evt);
     return;
   }
-  renderMessage(MESSAGE_STATUS.error, HEADER_TEXT.error_file, BUTTON_TEXT.error_file);
+  renderMessage(ERROR_CLASS, MESSAGE_LOAD);
 };
 
 const setButtonState = (state) => {
@@ -75,12 +65,12 @@ const setButtonState = (state) => {
 
 const uploadSuccess = () => {
   closeUploadForm();
-  renderMessage(MESSAGE_STATUS.success, HEADER_TEXT.success, BUTTON_TEXT.success);
+  renderMessage(SUCCESS_CLASS, MESSAGE_SUCCESS, SUCCESS_BTN_TEXT);
   setButtonState(false);
 };
 
 const uploadError = () => {
-  renderMessage(MESSAGE_STATUS.error, HEADER_TEXT.error, BUTTON_TEXT.error);
+  renderMessage(ERROR_CLASS, MESSAGE_ERROR, ERROR_BTN_TEXT);
   setButtonState(false);
 };
 

@@ -43,7 +43,7 @@ const EFFECTS = {
   }
 };
 
-const imagePreview = document.querySelector('.img-upload__preview');
+const imagePreview = document.querySelector('.img-upload__preview img');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const slider = document.querySelector('.effect-level__slider');
 const effectSaturation = document.querySelector('.effect-level__value');
