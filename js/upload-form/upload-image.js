@@ -47,7 +47,9 @@ const closeUploadForm = () => {
 const showImagePreview = (evt) => {
   const fileUrl = URL.createObjectURL(evt.target.files[0]);
   imagePreview.src = fileUrl;
-  effectsPreviewImages.forEach((effect) => (effect.style.backgroundImage = `url(${fileUrl})`));
+  effectsPreviewImages.forEach((effect) => {
+    effect.style.backgroundImage = `url(${fileUrl})`;
+  });
 };
 
 const uploadInputChangeHandler = (evt) => {

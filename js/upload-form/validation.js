@@ -18,7 +18,7 @@ const pristine = new Pristine(uploadForm, {
 
 const checkDescriptionLength = (value) => value.length <= COMMENTS_MAX_LENGTH;
 
-const createHashtags = (value) => value.trim().toLowerCase().split(' ');
+const createHashtags = (value) => value.trim().toLowerCase().split(' ').filter((it) => it);
 
 const checkHashtagsCorrect = (value) => {
   if (!value.length) {
